@@ -26,7 +26,18 @@ def insert_money():
 
 def get_selection():
     print_menu()
-    return input("What would you like? ").lower()
+    on = True
+    while on:
+        selection = input("What would you like? ")
+        if selection in menu:
+            return selection
+        elif selection == "off":
+            on = False
+            print("Machine has been turned off")
+        else:
+            print("Invalid selection")
+        return on
+    
 
 def check_enough_money(selection, money):
     if money < menu[selection]['cost']:
@@ -56,6 +67,8 @@ def main():
     print("\n")
     print(print_menu())
     selection = get_selection()
+    if selection == False:
+        return
     money = insert_money()
     if check_enough_money(selection, money):
         if check_resources(selection):
