@@ -34,6 +34,8 @@ def get_selection():
         elif selection == "off":
             on = False
             print("Machine has been turned off")
+        elif selection == "report":
+            print_resources()
         else:
             print("Invalid selection")
         return on
@@ -63,8 +65,6 @@ def make_coffee(selection):
     return
 
 def main():
-    print_resources()
-    print("\n")
     print(print_menu())
     selection = get_selection()
     if selection == False:
